@@ -15,8 +15,9 @@ The function should:
   Example createMenuItem('tacos', 8, 'Lunch') should return {name: 'tacos', price: 8, category: 'Lunch'}
 */
 
-function createMenuItem(/*Your code here*/){
-    /*Your code here*/
+function createMenuItem(item, money, meal){
+  const menuarray={name: item, price: money, category: meal}
+    return(menuarray);
 }
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 1b: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
@@ -48,9 +49,14 @@ export const burger = {
   name: "Burger", 
   price: 18, 
   category: "Lunch", 
-  /*Your code here*/
+  discount: function(customer){
+    if(customer==="teacher" || customer==="student"){
+      return this.price * 0.75;
+    }else if(customer==="public"){
+      return this.price * 0.9;
+    }
 }
-
+}
 
 
 ///////////////Reviews (MVP)///////////////////
@@ -69,7 +75,7 @@ const reviews = [
 Using the reviews array above:
   1. log only Julius' feedback to the console - no function needed 
 */
-
+console.log(reviews[5].feedback);
 
 
 
@@ -78,7 +84,12 @@ Using the reviews array above do the following: (no function needed)
   1. Following the same format (name, rating, feedback), add a new fictitious review object to the reviews array
   2. log the whole array to the console, make sure the new review is inside of it   
 */
-
+reviews.push({
+  name: "Alex",
+  rating: 3.5,
+  feedback: 'This place was okay'
+}
+)
 
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 5: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 
@@ -86,7 +97,8 @@ Reyna's feedback is missing! Use what you know to do the following: (no function
   1. Add this feedback to Reyna's rating - "this place is chill with really cool people, great for getting work done on weekdays"
   2. log the reviews array to the console to check your work
 */
-
+const reynaReview = reviews.find(review => review.name === "Reyna");
+reynaReview.feedback = "this place is chill with really cool people, great for getting work done on weekdays";
 
 
 
@@ -102,8 +114,8 @@ Use the getReviewByIndex function below to do the following:
 */
 
 
-function getReviewByIndex(/*Your code here*/) {
-  /*Your code here*/
+function getReviewByIndex(reviews, number) {
+ return `${reviews[number].name} gave the restaurant a ${reviews[number].rating} star review, and their feedback was: ${reviews[number].feedback}`;
 }
 
 
@@ -121,9 +133,9 @@ Use the getLastReview function below to do the following:
 */
 
 
-function getLastReview(/*Your code here*/) {
-  /*Your code here*/
-} 
+function getLastReview(reviews) {
+  return `${reviews[reviews.length-1].name} gave the restaurant a ${reviews[reviews.length-1].rating} star review, and their feedback was: ${reviews[reviews.length-1].feedback}`;
+}
 
 
 
